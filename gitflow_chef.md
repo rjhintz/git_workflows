@@ -1,3 +1,7 @@
+# Chef Git Workflow
+
+[Chef Git Workflow](https://docs.chef.io/community_contributions.html)
+
 ## Contribution Process
 
 We have a 3 step process for contributions:
