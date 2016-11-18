@@ -1,5 +1,7 @@
 # OG-AWS Git Workflow
 
+*Rev 0.1*
+
 ## Contribution Process
 
 There is a 3 step process for contributions when using git and an editor like Vim or Atom:
