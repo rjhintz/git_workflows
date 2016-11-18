@@ -2,7 +2,7 @@
 
 ## Contribution Process
 
-There is a 3 step process for contributions:
+There is a 3 step process for contributions when using git and an editor like Vim or Atom:
 
 * Commit changes to a git branch.
 * Create a GitHub Pull Request for your change,
@@ -39,7 +39,7 @@ Use the following steps to set up a development repository for OG-AWS:
 
 `$ git remote -v`
 
-which should return something like:
+which should return something like, showing the base Github repositiory and your own repo:
 
 ```
 og-aws  https://github.com/open-guides/og-aws.git (fetch)
@@ -48,7 +48,7 @@ origin  https://github.com/YourGitHubUserName/og-aws.git (fetch)
 origin  https://github.com/YourGitHubUserName/og-aws.git (push)
 ```
 
-## Keep Master Current
+## Keep Local Master Current With Fork
 Use the following steps to keep the your local master branch up to date with your Github fork.
 
 * Run:
@@ -59,7 +59,7 @@ Use the following steps to keep the your local master branch up to date with you
 
 `$ git pull --rebase`
 
-## Sync Master
+## Sync Local Master with Base Project Master
 Use the following steps to synchronize with the base `open-guides/og-aws` master branch.
 
 * Run:
@@ -70,19 +70,19 @@ Use the following steps to synchronize with the base `open-guides/og-aws` master
 
 `$ git rebase og-aws/master master`
 
-#### Note
+#### Note on Rebase
 Use `rebase` instead of `merge` to ensure that a linear history is
 maintained that does not include unnecessary merge commits.
 `rebase` will also rewind, apply,
 and then reapply commits to the `master` branch.
 
-## Use Branch
+## Use a Topic Branch
 Commits to the OG-AWS repositories should never be made against the master branch.
 Use a topic branch instead.
 
 A topic branch solves a single and unique problem and often maps
 closely to an issue being tracked in the repository.
-For example, a topic branch to add significant content associated with an issue.
+For example, a topic branch could be used to add significant content associated with an issue.
 
 Ideally, a topic branch is named in a way that associates it
 closely with the issue it is attempting to resolve.
@@ -90,8 +90,8 @@ This helps ensure that others may easily find it.
 
 Use the following steps to create a topic branch:
 
-* For a brand new clone of the OG-AWS repository
-(that was created using the steps listed earlier), fetch the og-aws remote:
+* For a brand new clone of the OG-AWS repository 
+that was created using the steps listed earlier, fetch the og-aws remote:
 
 `$ git fetch og-aws`
 
@@ -104,9 +104,15 @@ This allows commits to be easily rebased prior to merging.
 
 * Make your changes, and then commit them:
 
+* First review what files are staged for commit, if any
+
 `$ git status`
 
-* And then run the following, which stages and commits tracked files:
+* Add changed file or possibly files to be staged
+
+`$ git add <filename>`
+
+* Commit tracked files:
 
 `$ git commit -am "commit message`
 
@@ -121,7 +127,7 @@ In the event of problems, fix them as directed,
 and then mark as fixed with a `git add`,
 and then continue the rebase process using `git rebase --continue`.
 
-For example:
+For example, first fetch from the base repository:
 
 `$ git fetch og-aws`
 
