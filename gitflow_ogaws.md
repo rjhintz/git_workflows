@@ -23,44 +23,33 @@ Use the following steps to set up a development repository for OG-AWS:
 
 * Set up a GitHub account.
 * Fork the https://github.com/open-guides/og-aws repository to your GitHub account.
-* Clone the https://github.com/open-guides/og-aws repository:
+* Clone your fork of the https://github.com/open-guides/og-aws repository:
 
-`$ git clone git@github.com:yourgithubusername/og-aws.git`
+`$ git clone https://github.com/YourGitHubUserName/og-aws.git`
 
 * From the command line, browse to the `open-guides/` directory:
 
-`$ cd open-guides/`
+`$ cd og-aws/`
 
-* From the open-guides/ directory, add a remote named og-aws:
+* From the `og-aws/` directory, add a remote named `og-aws` pointing to the base `open-guides/og-aws` directory:
 
-`$ git remote add og-aws git://github.com/open-guides/og-aws.git`
+`$ git remote add og-aws https://github.com/open-guides/og-aws.git`
 
 * Verify:
 
-`$ git config --get-regexp "^remote\.og-aws"`
+`$ git remote -v`
 
 which should return something like:
 
-`remote.og-aws.url git://github.com/open-guides/og-aws.git`
-
-`remote.og-aws.fetch +refs/heads/*:refs/remotes/open-guides/*`
-
-* Adjust your branch to track the open-guides/master remote branch:
-
-`$ git config --get-regexp "^branch\.master"`
-
-which should return something like:
-
-`branch.master.remote origin`
-
-`branch.master.merge refs/heads/master`
-
-and then change it:
-
-`$ git config branch.master.remote og-aws`
+```
+og-aws  https://github.com/open-guides/og-aws.git (fetch)
+og-aws  https://github.com/open-guides/og-aws.git (push)
+origin  https://github.com/YourGitHubUserName/og-aws.git (fetch)
+origin  https://github.com/YourGitHubUserName/og-aws.git (push)
+```
 
 ## Keep Master Current
-Use the following steps to keep the master branch up to date.
+Use the following steps to keep the your local master branch up to date with your Github fork.
 
 * Run:
 
@@ -71,7 +60,7 @@ Use the following steps to keep the master branch up to date.
 `$ git pull --rebase`
 
 ## Sync Master
-Use the following steps to synchronize the master branch.
+Use the following steps to synchronize with the base `open-guides/og-aws` master branch.
 
 * Run:
 
@@ -79,7 +68,7 @@ Use the following steps to synchronize the master branch.
 
 * And then run:
 
-`$ git rebase open-guides/master master`
+`$ git rebase og-aws/master master`
 
 #### Note
 Use `rebase` instead of `merge` to ensure that a linear history is
@@ -108,20 +97,20 @@ Use the following steps to create a topic branch:
 
 * Create an appropriately named tracking branch:
 
-`$ git checkout --track -b og-aws-<topic-name> open-guides/master`
+`$ git checkout --track -b og-aws-<topic-name> og-aws/master`
 
-Set up a topic branch to track open-guides/master.
+Sets up a topic branch to track the base open-guides og-aws/master.
 This allows commits to be easily rebased prior to merging.
 
 * Make your changes, and then commit them:
 
 `$ git status`
 
-* And then run:
+* And then run the following, which stages and commits tracked files:
 
-`$ git commit <filespec>`
+`$ git commit -am "commit message`
 
-* Rebase the commits against `open-guides/master`.
+* Rebase the commits against the base `og-aws/master`.
 After work in the topic branch is finished,
 rebase these commits against the upstream master.
 Do this manually with `git fetch` followed by a `git rebase`
@@ -138,7 +127,7 @@ For example:
 
 followed by:
 
-`$ git rebase open-guides/master og-aws-<topic-name>`
+`$ git rebase og-aws/master og-aws-<topic-name>`
 
 Or:
 
