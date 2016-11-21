@@ -1,6 +1,6 @@
 # aws/aws-week-in-review Git Workflow
 
-*Rev 0.1*
+*Rev 0.2*
 
 ## Contribution Process
 
@@ -32,7 +32,7 @@ repository for `aws/aws-week-in-review`:
 
 `$ git clone https://github.com/YourGitHubUserName/aws-week-in-review.git`
 
-* From the command line, browse to the `aws/` directory:
+* From the command line, browse to the `aws-week-in-review/` directory:
 
 `$ cd aws-week-in-review/`
 
@@ -67,7 +67,7 @@ Use the following steps to keep the your local master branch up to date with you
 `$ git pull --rebase`
 
 ## Sync Local Master with Base Project Master
-Use the following steps to synchronize with the base `aws/aws-week-in-review` master branch.
+Use the following steps to synchronize locally with the base `aws/aws-week-in-review` master branch.
 
 * Run:
 
@@ -76,6 +76,16 @@ Use the following steps to synchronize with the base `aws/aws-week-in-review` ma
 * And then run:
 
 `$ git rebase aws-week-in-review/master master`
+
+## Sync Your Github Fork with Both Local and Base
+If your Github fork is behind the base master, update the fork to the level of your local, which you just rebased  with the base repository:
+
+`git push`
+
+You can check your Github fork to see if it is now even with the base repository.
+If so, it will say:
+
+`This branch is even with aws:master.`
 
 #### Note on Rebase
 Use `rebase` instead of `merge` to ensure that a linear history is
@@ -104,12 +114,16 @@ that was created using the steps listed earlier, fetch the aws-week-in-review re
 
 * Create an appropriately named tracking branch:
 
-`$ git checkout --track -b aws-week-in-review-<topic-name> aws-week-in-review/master`
+`$ git checkout --track -b aws-week-<topic-name> aws-week-in-review/master`
 
 Sets up a topic branch to track the base aws aws-week-in-review/master.
 This allows commits to be easily rebased prior to merging.
 
-* Make your changes, and then commit them:
+* Make your changes, review, and then commit them.
+
+* Review
+
+`$ git diff`
 
 * First review what files are staged for commit, if any
 
@@ -121,7 +135,7 @@ This allows commits to be easily rebased prior to merging.
 
 * Commit tracked files:
 
-`$ git commit -am "commit message`
+`$ git commit -am "commit message"`
 
 * Rebase the commits against the base `aws-week-in-review/master`.
 After work in the topic branch is finished,
@@ -140,7 +154,7 @@ For example, first fetch from the base repository:
 
 followed by:
 
-`$ git rebase aws-week-in-review/master aws-week-in-review-<topic-name>`
+`$ git rebase aws-week-in-review/master aws-week-<topic-name>`
 
 Or:
 
@@ -148,7 +162,7 @@ Or:
 
 * Push the local topic branch to GitHub:
 
-`$ git push origin aws-week-in-review-<topic-name>`
+`$ git push origin aws-week-<topic-name>`
 
 * Send a GitHub pull request for the changes,
 including `#<issue>`, if applicable.
@@ -157,6 +171,14 @@ You can [include keywords in your commit
 messages](https://help.github.com/articles/closing-issues-via-commit-messages/)
 to automatically close issues in GitHub, though this may not be appropriate for
 many issues that have ongoing content additions or revisions.
+
+* Navigate to the base project
+* Select `New pull request` button
+* Compare changes using `compare across forks` link
+* Make sure base fork is base project and its base is `master`
+* Change `head fork` to your fork and compare is `master`
+' Redview pull request text and review change diff
+
 
 ## Delete Branch
 After work has been merged by the branch maintainer,
@@ -184,9 +206,9 @@ followed by:
 
 * Remove the local branch:
 
-`$ git branch -d aws-week-in-review-<topic-name>`
+`$ git branch -d aws-week-in-<topic-name>`
 
 Or remove the remote branch by using the full syntax to push`
 and by omitting a source branch:
 
-`$ git push origin :aws-week-in-review-<topic-name>`
+`$ git push origin :aws-week-<topic-name>`
