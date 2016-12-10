@@ -49,10 +49,19 @@ which should return something like,
 showing the base Github repositiory and your own repo:
 
 ```
-aws-week-in-review  https://github.com/aws/aws-week-in-review.git (fetch)
-aws-week-in-review  https://github.com/aws/aws-week-in-review.git (push)
+aws-week-fork  https://github.com/aws/aws-week-in-review.git (fetch)
+aws-week-fork  https://github.com/aws/aws-week-in-review.git (push)
 origin  https://github.com/YourGitHubUserName/aws-week-in-review.git (fetch)
 origin  https://github.com/YourGitHubUserName/aws-week-in-review.git (push)
+```
+
+or
+
+```
+aws-week-fork	git@github.com:rjhintz/aws-week-in-review.git (fetch)
+aws-week-fork	git@github.com:rjhintz/aws-week-in-review.git (push)
+origin	git@github.com:aws/aws-week-in-review.git (fetch)
+origin	git@github.com:aws/aws-week-in-review.git (push)
 ```
 
 ## Keep Local Master Current With Fork
@@ -71,11 +80,11 @@ Use the following steps to synchronize locally with the base `aws/aws-week-in-re
 
 * Run:
 
-`$ git fetch aws-week-in-review`
+`$ git fetch aws-week-fork`
 
 * And then run:
 
-`$ git rebase aws-week-in-review/master master`
+`$ git rebase aws-week-fork/master master`
 
 ## Sync Your Github Fork with Both Local and Base
 If your Github fork is behind the base master, update the fork to the level of your local, which you just rebased  with the base repository:
